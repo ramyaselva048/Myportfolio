@@ -1,0 +1,1559 @@
+/* =========================================================
+   RAMYA SELVA PORTFOLIO
+   LOGIN + SIGNUP AUTHENTICATION STYLE
+   Premium Glassmorphism Design
+========================================================= */
+
+
+/* =========================================================
+   01. RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    min-height: 100%;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family: "Inter", sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(112, 78, 255, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(48, 218, 255, 0.14),
+            transparent 30%
+        ),
+        #060714;
+
+    overflow-x: hidden;
+}
+
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   02. MAIN BACKGROUND
+========================================================= */
+
+.auth-page {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 35px 20px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   03. BACKGROUND GRID
+========================================================= */
+
+.background-grid {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.35;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+}
+
+
+/* =========================================================
+   04. DECORATIVE SHAPES
+========================================================= */
+
+.background-shape {
+    position: fixed;
+
+    z-index: 0;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(5px);
+}
+
+
+.shape-one {
+    width: 500px;
+    height: 500px;
+
+    top: -220px;
+    left: -180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(125, 90, 255, 0.20),
+            transparent 68%
+        );
+
+    animation:
+        authFloatOne 10s ease-in-out infinite;
+}
+
+
+.shape-two {
+    width: 550px;
+    height: 550px;
+
+    right: -220px;
+    bottom: -250px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(47, 222, 255, 0.17),
+            transparent 68%
+        );
+
+    animation:
+        authFloatTwo 12s ease-in-out infinite;
+}
+
+
+@keyframes authFloatOne {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(30px, 35px)
+            scale(1.08);
+    }
+}
+
+
+@keyframes authFloatTwo {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-30px, -25px)
+            scale(1.08);
+    }
+}
+
+
+/* =========================================================
+   05. MAIN AUTH WRAPPER
+========================================================= */
+
+.auth-wrapper {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(
+        1120px,
+        100%
+    );
+
+    min-height: 680px;
+
+    display: grid;
+
+    grid-template-columns:
+        0.92fr
+        1.08fr;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+    border-radius: 30px;
+
+    background:
+        rgba(12, 15, 38, 0.76);
+
+    box-shadow:
+        0 35px 100px
+        rgba(0, 0, 0, 0.55),
+
+        0 0 80px
+        rgba(99, 81, 255, 0.08);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    animation:
+        authWrapperIn 0.8s ease both;
+}
+
+
+@keyframes authWrapperIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   06. LEFT INTRO PANEL
+========================================================= */
+
+.auth-intro {
+    position: relative;
+
+    min-height: 680px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 55px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(122, 91, 255, 0.17),
+            rgba(22, 192, 230, 0.07) 55%,
+            rgba(255, 255, 255, 0.015)
+        );
+
+    border-right:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+
+.auth-intro::before {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    right: -180px;
+    top: -160px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(100, 220, 255, 0.20);
+
+    box-shadow:
+        0 0 80px
+        rgba(85, 225, 255, 0.06);
+}
+
+
+.auth-intro::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    left: -180px;
+    bottom: -140px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(124, 91, 255, 0.09);
+
+    filter: blur(40px);
+}
+
+
+/* =========================================================
+   07. BRAND MARK
+========================================================= */
+
+.brand-mark,
+.mobile-brand {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    color: #07101c;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b7cff,
+            #4ee8ff
+        );
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 12px 35px
+        rgba(78, 232, 255, 0.16);
+
+    animation:
+        brandGlow 4s ease-in-out infinite;
+}
+
+
+@keyframes brandGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 12px 35px
+            rgba(78, 232, 255, 0.13);
+    }
+
+    50% {
+        box-shadow:
+            0 12px 45px
+            rgba(155, 124, 255, 0.30);
+    }
+}
+
+
+/* =========================================================
+   08. INTRO CONTENT
+========================================================= */
+
+.intro-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 460px;
+}
+
+
+.intro-label {
+    margin-top: 60px;
+
+    margin-bottom: 16px;
+
+    color: #57e8ff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+.intro-label::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 28px;
+    height: 2px;
+
+    margin-right: 9px;
+
+    vertical-align: middle;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9677ff,
+            #4ee8ff
+        );
+}
+
+
+.intro-content h1 {
+    margin-bottom: 22px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            64px
+        );
+
+    line-height: 1.04;
+
+    letter-spacing: -3px;
+}
+
+
+.intro-content h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff,
+            #54e7ff,
+            #a27cff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.intro-description {
+    max-width: 420px;
+
+    margin-bottom: 35px;
+
+    color: #8e98b9;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   09. INTRO FEATURES
+========================================================= */
+
+.intro-features {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.intro-feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    width: fit-content;
+
+    padding: 10px 13px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    transition:
+        transform 0.3s ease,
+        border 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.intro-feature:hover {
+    transform:
+        translateX(7px);
+
+    border-color:
+        rgba(78, 232, 255, 0.20);
+
+    background:
+        rgba(78, 232, 255, 0.045);
+}
+
+
+.feature-icon {
+    width: 37px;
+    height: 37px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    color: #07101c;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9677ff,
+            #4ee8ff
+        );
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+
+.intro-feature strong,
+.intro-feature small {
+    display: block;
+}
+
+
+.intro-feature strong {
+    margin-bottom: 2px;
+
+    color: #e9ecfa;
+
+    font-size: 11px;
+}
+
+
+.intro-feature small {
+    color: #707a9c;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   10. INTRO FOOTER
+========================================================= */
+
+.intro-footer {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    color: #606a8b;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   11. RIGHT AUTH BOX
+========================================================= */
+
+.auth-box {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        50px
+        65px;
+
+    background:
+        rgba(7, 9, 25, 0.44);
+}
+
+
+/* =========================================================
+   12. AUTH HEADER
+========================================================= */
+
+.auth-header {
+    margin-bottom: 28px;
+}
+
+
+.auth-header > p {
+    margin-bottom: 8px;
+
+    color: #57e8ff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+.auth-header h2 {
+    margin-bottom: 7px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    line-height: 1.15;
+
+    letter-spacing: -1.3px;
+}
+
+
+.auth-header > span {
+    color: #747e9f;
+
+    font-size: 12px;
+}
+
+
+.mobile-brand {
+    display: none;
+}
+
+
+/* =========================================================
+   13. FORM
+========================================================= */
+
+.auth-form {
+    width: 100%;
+}
+
+
+.form-group {
+    margin-bottom: 19px;
+}
+
+
+.form-group > label,
+.label-row label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #c7cce0;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+}
+
+
+.label-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.label-row a {
+    color: #57e8ff;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+
+.label-row a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   14. INPUT WRAPPER
+========================================================= */
+
+.input-wrapper {
+    position: relative;
+
+    width: 100%;
+}
+
+
+.input-icon {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 2;
+
+    color: #66708f;
+
+    font-size: 13px;
+
+    pointer-events: none;
+
+    transition: 0.25s;
+}
+
+
+.input-wrapper input {
+    width: 100%;
+
+    height: 51px;
+
+    padding:
+        0
+        45px
+        0
+        43px;
+
+    outline: none;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 11px;
+
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    font-size: 12px;
+
+    transition:
+        border 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.input-wrapper input::placeholder {
+    color: #555e7e;
+}
+
+
+.input-wrapper input:hover {
+    border-color:
+        rgba(255, 255, 255, 0.14);
+}
+
+
+.input-wrapper input:focus {
+    border-color:
+        rgba(78, 232, 255, 0.48);
+
+    background:
+        rgba(78, 232, 255, 0.035);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(78, 232, 255, 0.06);
+}
+
+
+.input-wrapper:focus-within
+.input-icon {
+    color: #57e8ff;
+}
+
+
+/* =========================================================
+   15. PASSWORD TOGGLE
+========================================================= */
+
+.password-toggle {
+    position: absolute;
+
+    top: 50%;
+    right: 12px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform:
+        translateY(-50%);
+
+    border: none;
+
+    border-radius: 8px;
+
+    color: #727c9b;
+
+    background:
+        transparent;
+
+    font-size: 13px;
+
+    transition: 0.25s;
+}
+
+
+.password-toggle:hover {
+    color: #57e8ff;
+
+    background:
+        rgba(78, 232, 255, 0.07);
+}
+
+
+/* =========================================================
+   16. REMEMBER ME
+========================================================= */
+
+.remember-row {
+    margin:
+        5px
+        0
+        20px;
+}
+
+
+.remember-label,
+.terms-label {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #737d9e;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+.remember-label input,
+.terms-label input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.custom-checkbox {
+    position: relative;
+
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.03);
+
+    transition: 0.25s;
+}
+
+
+.remember-label input:checked
++ .custom-checkbox,
+.terms-label input:checked
++ .custom-checkbox {
+    border-color:
+        transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9677ff,
+            #4ee8ff
+        );
+}
+
+
+.remember-label input:checked
++ .custom-checkbox::after,
+.terms-label input:checked
++ .custom-checkbox::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -55%);
+
+    color: #07101c;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   17. TERMS
+========================================================= */
+
+.terms-row {
+    margin:
+        3px
+        0
+        20px;
+}
+
+
+.terms-label {
+    align-items: flex-start;
+
+    line-height: 1.5;
+}
+
+
+.terms-label .custom-checkbox {
+    margin-top: 1px;
+}
+
+
+.terms-label a {
+    color: #57e8ff;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+
+.terms-label a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   18. LOGIN / SIGNUP BUTTON
+========================================================= */
+
+.login-button {
+    position: relative;
+
+    width: 100%;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    overflow: hidden;
+
+    border: none;
+
+    border-radius: 11px;
+
+    color: #07101c;
+
+    background:
+        linear-gradient(
+            100deg,
+            #9878ff,
+            #4ee8ff
+        );
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 15px 35px
+        rgba(78, 232, 255, 0.13);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+.login-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    transform:
+        skewX(-25deg);
+
+    background:
+        rgba(255,255,255,0.25);
+
+    transition:
+        left 0.6s ease;
+}
+
+
+.login-button:hover::before {
+    left: 140%;
+}
+
+
+.login-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(78, 232, 255, 0.23);
+
+    filter:
+        brightness(1.05);
+}
+
+
+.login-button:active {
+    transform:
+        translateY(-1px);
+}
+
+
+.login-button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.75;
+
+    transform: none;
+}
+
+
+.button-arrow {
+    font-size: 18px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.login-button:hover
+.button-arrow {
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   19. MESSAGE
+========================================================= */
+
+.auth-message {
+    min-height: 20px;
+
+    margin-top: 12px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+.auth-message.success {
+    color: #69ffb0;
+}
+
+
+.auth-message.error {
+    color: #ff7f8c;
+}
+
+
+/* =========================================================
+   20. DIVIDER
+========================================================= */
+
+.divider {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin:
+        22px
+        0;
+}
+
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+}
+
+
+.divider span {
+    padding:
+        0
+        12px;
+
+    color: #4f5876;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   21. SIGNUP / LOGIN SWITCH
+========================================================= */
+
+.signup-box {
+    text-align: center;
+}
+
+
+.signup-box p {
+    margin-bottom: 7px;
+
+    color: #68728f;
+
+    font-size: 10px;
+}
+
+
+.signup-box a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+
+.signup-box a span {
+    color: #57e8ff;
+
+    font-size: 16px;
+
+    transition: 0.25s;
+}
+
+
+.signup-box a:hover {
+    color: #57e8ff;
+}
+
+
+.signup-box a:hover span {
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   22. SECURITY NOTE
+========================================================= */
+
+.security-note {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 23px;
+
+    padding-top: 17px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.05);
+}
+
+
+.security-note span {
+    font-size: 10px;
+}
+
+
+.security-note p {
+    color: #505a78;
+
+    font-size: 8px;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   23. INPUT AUTOFILL
+========================================================= */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+
+    -webkit-box-shadow:
+        0 0 0 1000px
+        #10142d
+        inset;
+
+    transition:
+        background-color 5000s ease-in-out 0s;
+}
+
+
+/* =========================================================
+   24. RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .auth-wrapper {
+        grid-template-columns:
+            1fr
+            1fr;
+
+        min-height: 650px;
+    }
+
+
+    .auth-intro {
+        padding: 40px;
+    }
+
+
+    .auth-box {
+        padding:
+            40px;
+    }
+
+
+    .intro-content h1 {
+        font-size: 46px;
+    }
+
+
+    .intro-description {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   25. RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+
+    .auth-page {
+        padding:
+            18px;
+    }
+
+
+    .auth-wrapper {
+        width: 100%;
+
+        display: block;
+
+        min-height: auto;
+
+        border-radius: 23px;
+    }
+
+
+    /* Hide desktop introduction */
+
+    .auth-intro {
+        display: none;
+    }
+
+
+    /* Login / Signup */
+
+    .auth-box {
+        min-height: 650px;
+
+        padding:
+            40px 28px;
+
+        background:
+            rgba(7, 9, 25, 0.70);
+    }
+
+
+    .mobile-brand {
+        display: flex;
+
+        margin-bottom: 25px;
+    }
+
+
+    .auth-header {
+        margin-bottom: 25px;
+    }
+
+
+    .auth-header h2 {
+        font-size: 30px;
+    }
+
+
+    .auth-header > span {
+        font-size: 11px;
+    }
+
+
+    .shape-one {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    .shape-two {
+        width: 320px;
+        height: 320px;
+    }
+
+}
+
+
+/* =========================================================
+   26. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .auth-page {
+        padding:
+            10px;
+    }
+
+
+    .auth-wrapper {
+        border-radius: 20px;
+    }
+
+
+    .auth-box {
+        padding:
+            32px 20px;
+    }
+
+
+    .auth-header h2 {
+        font-size: 27px;
+    }
+
+
+    .auth-header > span {
+        font-size: 10px;
+    }
+
+
+    .input-wrapper input {
+        height: 49px;
+
+        font-size: 11px;
+    }
+
+
+    .login-button {
+        height: 50px;
+
+        font-size: 11px;
+    }
+
+
+    .security-note p {
+        font-size: 7px;
+    }
+
+}
+
+
+/* =========================================================
+   27. ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline:
+        2px solid
+        #57e8ff;
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   28. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation:
+            none !important;
+
+        transition:
+            none !important;
+    }
+
+}
