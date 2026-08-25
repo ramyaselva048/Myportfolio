@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Ramya S - Computer Science Engineering Student Portfolio">
+
+    <title>Ramya S | Portfolio</title>
+
+
+    <!-- LOGIN PROTECTION -->
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.replace("login.html");
+        }
+    </script>
+
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION BAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+
+        <!-- Logo -->
+
+        <a href="#home"
+           class="logo">
+
+            Ramya
+
+            <span>.</span>
+
+        </a>
+
+
+        <!-- Mobile Menu -->
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu">
+
+            ☰
+
+        </button>
+
+
+        <!-- Navigation -->
+
+        <nav id="navMenu">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#skills">
+                Skills
+            </a>
+
+            <a href="#education">
+                Education
+            </a>
+
+            <a href="#experience">
+                Experience
+            </a>
+
+            <a href="#projects">
+                Projects
+            </a>
+
+            <a href="#certifications">
+                Certifications
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+
+            <!-- Logout -->
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn">
+
+                Logout
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<main>
+
+
+<section
+    class="hero"
+    id="home">
+
+
+    <!-- Decorative Background -->
+
+    <div class="hero-orb hero-orb-one"></div>
+
+    <div class="hero-orb hero-orb-two"></div>
+
+
+    <div class="hero-container">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="hero-content">
+
+
+            <p class="hero-label">
+                WELCOME TO MY PORTFOLIO
+            </p>
+
+
+            <h1>
+
+                Hi, I'm
+
+                <span>
+                    Ramya S
+                </span>
+
+            </h1>
+
+
+            <h2>
+
+                Computer Science &
+
+                <span>
+                    Engineering Student
+                </span>
+
+            </h2>
+
+
+            <p class="hero-description">
+
+                I am passionate about technology,
+                web development, programming and
+                creating creative digital experiences.
+                I love learning new technologies and
+                transforming ideas into meaningful
+                projects.
+
+            </p>
+
+
+            <!-- Hero Buttons -->
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#projects"
+                    class="btn btn-primary">
+
+                    Explore My Work
+
+                </a>
+
+
+                <a
+                    href="#contact"
+                    class="btn btn-secondary">
+
+                    Let's Connect
+
+                </a>
+
+            </div>
+
+
+            <!-- Social Links -->
+
+            <div class="social-links">
+
+                <a
+                    href="https://www.linkedin.com/in/ramyaselva-4365453a"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Linkedin"
+                >
+
+                    LinkedIn
+
+                </a>
+
+
+                <a
+                    href="https://github.com/ramyaselva048"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub">
+
+                    GitHub
+
+                </a>
+
+
+                <a
+                    href="mailto:ramyaselva048@gmail.com">
+
+                    Email
+
+                </a>
+
+            </div>
+
+
+            <!-- Quick Stats -->
+
+            <div class="hero-stats">
+
+                <div class="stat">
+
+                    <strong>
+                        08+
+                    </strong>
+
+                    <span>
+                        Skills
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        03+
+                    </strong>
+
+                    <span>
+                        Projects
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        08+
+                    </strong>
+
+                    <span>
+                        Certifications
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT SIDE - PROFILE IMAGE
+        ================================================= -->
+
+        <div class="hero-visual">
+
+            <div class="visual-circle"></div>
+
+
+            <!-- PROFILE IMAGE -->
+
+            <div class="image-container">
+
+                <img
+                    src="./images/profile.jpg"
+                    alt="Ramya S profile photo"
+                    class="profile-image"
+                    loading="eager">
+
+            </div>
+
+
+            <!-- Floating Card -->
+
+            <div class="floating-card floating-card-one">
+
+                <span class="floating-icon">
+                    ✦
+                </span>
+
+                <div>
+
+                    <strong>
+                        Creative
+                    </strong>
+
+                    <small>
+                        Developer
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-card floating-card-two">
+
+                <span class="floating-icon">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Always
+                    </strong>
+
+                    <small>
+                        Learning
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- Scroll Indicator -->
+
+    <a
+        href="#about"
+        class="scroll-down">
+
+        <span>
+            Scroll to explore
+        </span>
+
+        ↓
+
+    </a>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT SECTION
+===================================================== -->
+
+<section
+    class="section"
+    id="about">
+
+
+    <div class="section-heading">
+
+        <p>
+            GET TO KNOW ME
+        </p>
+
+        <h2>
+
+            About
+
+            <span>
+                Me
+            </span>
+
+        </h2>
+
+    </div>
+
+
+    <div class="about-layout">
+
+
+        <div class="about-content">
+
+            <span class="section-number">
+                01
+            </span>
+
+
+            <h3>
+                Turning curiosity
+                into creativity.
+            </h3>
+
+
+            <p>
+                I am a Computer Science and
+                Engineering student with a strong
+                interest in technology, web
+                development and programming.
+            </p>
+
+
+            <p>
+                I enjoy creating websites,
+                experimenting with new technologies
+                and developing projects that solve
+                practical problems.
+            </p>
+
+
+            <p>
+                My goal is to continuously improve
+                my technical skills and gain
+                practical experience by working
+                on meaningful projects.
+            </p>
+
+
+            <a
+                href="#contact"
+                class="text-link">
+
+                Let's work together →
+
+            </a>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <article class="about-card">
+
+                <div class="card-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Web Development
+                </h3>
+
+                <p>
+                    Building responsive,
+                    modern and user-friendly
+                    websites.
+                </p>
+
+            </article>
+
+
+            <article class="about-card">
+
+                <div class="card-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    AI & Technology
+                </h3>
+
+                <p>
+                    Exploring artificial
+                    intelligence and emerging
+                    technologies.
+                </p>
+
+            </article>
+
+
+            <article class="about-card">
+
+                <div class="card-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Problem Solving
+                </h3>
+
+                <p>
+                    Finding practical and
+                    creative solutions to
+                    technical challenges.
+                </p>
+
+            </article>
+
+
+            <article class="about-card">
+
+                <div class="card-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Continuous Learning
+                </h3>
+
+                <p>
+                    Learning new skills and
+                    improving every day.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SKILLS SECTION
+===================================================== -->
+
+<section
+    class="section dark-section"
+    id="skills">
+
+
+    <div class="section-heading">
+
+        <p>
+            MY TECHNICAL TOOLKIT
+        </p>
+
+        <h2>
+
+            Skills &
+
+            <span>
+                Technologies
+            </span>
+
+        </h2>
+
+    </div>
+
+
+    <div class="skills-container">
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    PY
+                </span>
+
+                <span class="skill-level">
+                    Advanced
+                </span>
+
+            </div>
+
+            <h3>
+                Python
+            </h3>
+
+            <p>
+                Programming, automation
+                and application development.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 90%;"></span>
+            </div>
+
+        </article>
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    HTML
+                </span>
+
+                <span class="skill-level">
+                    Advanced
+                </span>
+
+            </div>
+
+            <h3>
+                HTML
+            </h3>
+
+            <p>
+                Semantic structure and
+                modern website development.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 92%;"></span>
+            </div>
+
+        </article>
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    CSS
+                </span>
+
+                <span class="skill-level">
+                    Advanced
+                </span>
+
+            </div>
+
+            <h3>
+                CSS
+            </h3>
+
+            <p>
+                Responsive layouts,
+                animations and UI design.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 88%;"></span>
+            </div>
+
+        </article>
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    JS
+                </span>
+
+                <span class="skill-level">
+                    Intermediate
+                </span>
+
+            </div>
+
+            <h3>
+                JavaScript
+            </h3>
+
+            <p>
+                Interactive features and
+                dynamic web experiences.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 78%;"></span>
+            </div>
+
+        </article>
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    AI
+                </span>
+
+                <span class="skill-level">
+                    Learning
+                </span>
+
+            </div>
+
+            <h3>
+                Artificial Intelligence
+            </h3>
+
+            <p>
+                AI concepts, tools and
+                emerging technologies.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 72%;"></span>
+            </div>
+
+        </article>
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    SQL
+                </span>
+
+                <span class="skill-level">
+                    Intermediate
+                </span>
+
+            </div>
+
+            <h3>
+                SQL
+            </h3>
+
+            <p>
+                Database management
+                and query development.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 75%;"></span>
+            </div>
+
+        </article>
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    DS
+                </span>
+
+                <span class="skill-level">
+                    Learning
+                </span>
+
+            </div>
+
+            <h3>
+                Data Science
+            </h3>
+
+            <p>
+                Data analysis using
+                Python tools and libraries.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 70%;"></span>
+            </div>
+
+        </article>
+
+
+        <article class="skill-card">
+
+            <div class="skill-top">
+
+                <span class="skill-symbol">
+                    GH
+                </span>
+
+                <span class="skill-level">
+                    Intermediate
+                </span>
+
+            </div>
+
+            <h3>
+                Git & GitHub
+            </h3>
+
+            <p>
+                Version control and
+                project collaboration.
+            </p>
+
+            <div class="skill-line">
+                <span style="width: 76%;"></span>
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
+
+<section
+    class="section"
+    id="education">
+
+
+    <div class="section-heading">
+
+        <p>
+            MY ACADEMIC JOURNEY
+        </p>
+
+        <h2>
+            Education
+        </h2>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <article class="timeline-item">
+
+            <div class="timeline-marker">
+                01
+            </div>
+
+
+            <div class="timeline-card">
+
+                <span class="timeline-date">
+                    2023 — 2027
+                </span>
+
+                <h3>
+                    B.E. Computer Science
+                    and Engineering
+                </h3>
+
+                <h4>
+                    Sasurie College of Engineering
+                </h4>
+
+                <p>
+                    Currently pursuing my
+                    undergraduate degree with
+                    a strong interest in software
+                    development and emerging
+                    technologies.
+                </p>
+
+                <span class="timeline-badge">
+                    CGPA: 8.13
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <article class="timeline-item">
+
+            <div class="timeline-marker">
+                02
+            </div>
+
+
+            <div class="timeline-card">
+
+                <span class="timeline-date">
+                    Higher Secondary
+                </span>
+
+                <h3>
+                    Higher Secondary Education
+                </h3>
+
+                <h4>
+                    Government Higher Secondary School
+                </h4>
+
+                <p>
+                    Completed higher secondary
+                    education.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="timeline-item">
+
+            <div class="timeline-marker">
+                03
+            </div>
+
+
+            <div class="timeline-card">
+
+                <span class="timeline-date">
+                    Secondary Education
+                </span>
+
+                <h3>
+                    Secondary School Education
+                </h3>
+
+                <h4>
+                    Government Higher Secondary School
+                </h4>
+
+                <p>
+                    Completed secondary school
+                    education.
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section
+    class="section dark-section"
+    id="experience">
+
+
+    <div class="section-heading">
+
+        <p>
+            PRACTICAL EXPERIENCE
+        </p>
+
+        <h2>
+            Intern<span>ships</span>
+        </h2>
+
+    </div>
+
+
+    <div class="experience-grid">
+
+
+        <article class="experience-card">
+
+            <div class="experience-header">
+
+                <div class="experience-icon">
+                    ☁
+                </div>
+
+                <span>
+                    Internship
+                </span>
+
+            </div>
+
+            <h3>
+                Cloud Computing
+            </h3>
+
+            <h4>
+                Internship Experience
+            </h4>
+
+            <p>
+                Gained practical exposure to
+                cloud computing concepts,
+                technologies and development
+                workflows.
+            </p>
+
+            <div class="tags">
+
+                <span>
+                    Cloud
+                </span>
+
+                <span>
+                    Technology
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <article class="experience-card">
+
+            <div class="experience-header">
+
+                <div class="experience-icon">
+                    AI
+                </div>
+
+                <span>
+                    Internship
+                </span>
+
+            </div>
+
+            <h3>
+                AI & Web Development
+            </h3>
+
+            <h4>
+                Internship Experience
+            </h4>
+
+            <p>
+                Worked on practical learning
+                activities related to AI concepts,
+                web development and digital
+                technologies.
+            </p>
+
+            <div class="tags">
+
+                <span>
+                    AI
+                </span>
+
+                <span>
+                    Web Development
+                </span>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
+<section
+    class="section"
+    id="projects">
+
+
+    <div class="section-heading">
+
+        <p>
+            MY CREATIVE WORK
+        </p>
+
+        <h2>
+            Featured
+            <span>
+                Projects
+            </span>
+        </h2>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+
+        <article class="project-card">
+
+            <div class="project-number">
+                01
+            </div>
+
+            <div class="project-icon">
+                🤖
+            </div>
+
+            <span class="project-category">
+                ARTIFICIAL INTELLIGENCE
+            </span>
+
+            <h3>
+                AI-Based Exam Hall
+                Seating Arrangement System
+            </h3>
+
+            <p>
+                A smart system designed to
+                automate exam hall seating
+                arrangements and reduce
+                manual effort.
+            </p>
+
+            <div class="tags">
+
+                <span>
+                    Python
+                </span>
+
+                <span>
+                    NumPy
+                </span>
+
+                <span>
+                    Pandas
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <article class="project-card">
+
+            <div class="project-number">
+                02
+            </div>
+
+            <div class="project-icon">
+                📝
+            </div>
+
+            <span class="project-category">
+                WEB DEVELOPMENT
+            </span>
+
+            <h3>
+                QuizSphere
+            </h3>
+
+            <p>
+                An interactive quiz platform
+                designed with user login,
+                quizzes, automatic scoring,
+                dashboard and leaderboard
+                functionality.
+            </p>
+
+            <div class="tags">
+
+                <span>
+                    HTML
+                </span>
+
+                <span>
+                    CSS
+                </span>
+
+                <span>
+                    JavaScript
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <article class="project-card">
+
+            <div class="project-number">
+                03
+            </div>
+
+            <div class="project-icon">
+                ✨
+            </div>
+
+            <span class="project-category">
+                PERSONAL BRAND
+            </span>
+
+            <h3>
+                Personal Portfolio
+            </h3>
+
+            <p>
+                A modern portfolio website
+                designed to showcase my
+                skills, education, projects,
+                certifications and experience.
+            </p>
+
+            <div class="tags">
+
+                <span>
+                    HTML
+                </span>
+
+                <span>
+                    CSS
+                </span>
+
+                <span>
+                    JavaScript
+                </span>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACHIEVEMENT
+===================================================== -->
+
+<section class="achievement">
+
+    <div class="achievement-inner">
+
+        <div class="achievement-icon">
+            🏆
+        </div>
+
+        <div>
+
+            <p>
+                PROUD MOMENT
+            </p>
+
+            <h2>
+                Academic Achievement
+            </h2>
+
+            <span>
+                Department-level academic achievement
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CERTIFICATIONS
+===================================================== -->
+
+<section
+    class="section dark-section"
+    id="certifications">
+
+
+    <div class="section-heading">
+
+        <p>
+            CONTINUOUS LEARNING
+        </p>
+
+        <h2>
+            Certifi<span>cations</span>
+        </h2>
+
+    </div>
+
+
+    <div class="certification-grid">
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                01
+            </span>
+
+            <div>
+
+                <h3>
+                    Generative AI Landscape
+                </h3>
+
+                <p>
+                    Infosys Springboard
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                02
+            </span>
+
+            <div>
+
+                <h3>
+                    Basics of Python
+                </h3>
+
+                <p>
+                    Infosys Springboard
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                03
+            </span>
+
+            <div>
+
+                <h3>
+                    Prompt Engineering
+                </h3>
+
+                <p>
+                    Infosys Springboard
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                04
+            </span>
+
+            <div>
+
+                <h3>
+                    TCS ION Career Edge
+                </h3>
+
+                <p>
+                    Young Professional
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                05
+            </span>
+
+            <div>
+
+                <h3>
+                    Python for Data Science
+                </h3>
+
+                <p>
+                    Saylor Academy
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                06
+            </span>
+
+            <div>
+
+                <h3>
+                    AWS Academy
+                </h3>
+
+                <p>
+                    Cloud Computing
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                07
+            </span>
+
+            <div>
+
+                <h3>
+                    Oracle Cloud Infrastructure
+                </h3>
+
+                <p>
+                    Cloud Foundations
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="certificate-card">
+
+            <span class="certificate-number">
+                08
+            </span>
+
+            <div>
+
+                <h3>
+                    Responsive Web Design
+                </h3>
+
+                <p>
+                    Web Development
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    class="section contact-section"
+    id="contact">
+
+
+    <div class="section-heading">
+
+        <p>
+            LET'S CONNECT
+        </p>
+
+        <h2>
+            Get In
+            <span>
+                Touch
+            </span>
+        </h2>
+
+    </div>
+
+
+    <div class="contact-layout">
+
+
+        <div class="contact-info">
+
+            <span class="section-number">
+                09
+            </span>
+
+            <h3>
+                Let's build something
+                meaningful together.
+            </h3>
+
+            <p>
+                Whether it's a project,
+                internship opportunity,
+                collaboration or simply
+                a conversation about technology,
+                feel free to reach out.
+            </p>
+
+
+            <div class="contact-detail">
+
+                <span>
+                    EMAIL
+                </span>
+
+                <a href="mailto:ramyaselva048@gmail.com">
+                    ramyaselva048@gmail.com
+                </a>
+
+            </div>
+
+
+            <div class="contact-detail">
+
+                <span>
+                    LOCATION
+                </span>
+
+                <strong>
+                    India
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Contact Form -->
+
+        <form
+            class="contact-form"
+            id="contactForm">
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="contactName">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="contactEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Enter your email"
+                        required>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="contactMessage">
+                    Message
+                </label>
+
+                <textarea
+                    id="contactMessage"
+                    rows="6"
+                    placeholder="Write your message..."
+                    required></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Send Message →
+
+            </button>
+
+
+            <p
+                id="contactStatus"
+                class="contact-status"
+                aria-live="polite">
+            </p>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-logo">
+
+            Ramya<span>.</span>
+
+        </div>
+
+
+        <p>
+            Designed & built with passion.
+        </p>
+
+
+        <p>
+            ©
+            <span id="currentYear"></span>
+            Ramya S.
+            All Rights Reserved.
+        </p>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="js/script.js"></script>
+
+
+</body>
+
+</html>
