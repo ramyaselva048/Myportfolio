@@ -1,810 +1,511 @@
+
 /* =========================================================
    RAMYA SELVA PORTFOLIO
-   AUTHENTICATION JAVASCRIPT
+   FIREBASE AUTHENTICATION + FIRESTORE
+   Preserves original form IDs and UI features
 ========================================================= */
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
-
-    /* =====================================================
-       LOGIN PAGE
-    ===================================================== */
-
-    const loginForm =
-        document.getElementById("loginForm");
-
-
-    if (loginForm) {
-
-
-        loginForm.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                const emailInput =
-                    document.getElementById(
-                        "loginEmail"
-                    );
-
-
-                const passwordInput =
-                    document.getElementById(
-                        "loginPassword"
-                    );
-
-
-                const message =
-                    document.getElementById(
-                        "loginMessage"
-                    );
-
-
-                const loginButton =
-                    document.getElementById(
-                        "loginButton"
-                    );
-
-
-                const rememberMe =
-                    document.getElementById(
-                        "rememberMe"
-                    );
-
-
-                const loginValue =
-                    emailInput.value.trim();
-
-
-                const password =
-                    passwordInput.value;
-
-
-                /* -----------------------------------------
-                   CHECK EMPTY FIELDS
-                ----------------------------------------- */
-
-                if (
-                    loginValue === "" ||
-                    password === ""
-                ) {
-
-                    showMessage(
-                        message,
-                        "Please enter your email and password.",
-                        "error"
-                    );
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   GET REGISTERED USER
-                ----------------------------------------- */
-
-                const savedUser =
-                    localStorage.getItem(
-                        "portfolioUser"
-                    );
-
-
-                if (!savedUser) {
-
-                    showMessage(
-                        message,
-                        "No account found. Please create an account first.",
-                        "error"
-                    );
-
-                    return;
-
-                }
-
-
-                let user;
-
-
-                try {
-
-                    user =
-                        JSON.parse(savedUser);
-
-                } catch (error) {
-
-                    showMessage(
-                        message,
-                        "Account data is corrupted. Please sign up again.",
-                        "error"
-                    );
-
-                    localStorage.removeItem(
-                        "portfolioUser"
-                    );
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   CHECK USERNAME / EMAIL
-                ----------------------------------------- */
-
-                const enteredValue =
-                    loginValue.toLowerCase();
-
-
-                const registeredEmail =
-                    String(user.email)
-                    .toLowerCase();
-
-
-                const registeredName =
-                    String(user.name)
-                    .toLowerCase();
-
-
-                const userMatches =
-                    enteredValue === registeredEmail ||
-                    enteredValue === registeredName;
-
-
-                /* -----------------------------------------
-                   CHECK PASSWORD
-                ----------------------------------------- */
-
-                const passwordMatches =
-                    password === user.password;
-
-
-                /* -----------------------------------------
-                   INVALID LOGIN
-                ----------------------------------------- */
-
-                if (
-                    !userMatches ||
-                    !passwordMatches
-                ) {
-
-                    showMessage(
-                        message,
-                        "Incorrect email/username or password.",
-                        "error"
-                    );
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   SUCCESSFUL LOGIN
-                ----------------------------------------- */
-
-                localStorage.setItem(
-                    "loggedIn",
-                    "true"
-                );
-
-
-                /* Save logged-in user's name */
-
-                localStorage.setItem(
-                    "loggedInUser",
-                    user.name
-                );
-
-
-                /* Remember me */
-
-                if (
-                    rememberMe &&
-                    rememberMe.checked
-                ) {
-
-                    localStorage.setItem(
-                        "rememberMe",
-                        "true"
-                    );
-
-                } else {
-
-                    localStorage.removeItem(
-                        "rememberMe"
-                    );
-
-                }
-
-
-                /* Disable button */
-
-                if (loginButton) {
-
-                    loginButton.disabled = true;
-
-                    loginButton.innerHTML =
-                        `
-                        <span>
-                            Opening Portfolio...
-                        </span>
-
-                        <span>
-                            ✓
-                        </span>
-                        `;
-
-                }
-
-
-                showMessage(
-                    message,
-                    "Login successful! Welcome back.",
-                    "success"
-                );
-
-
-                /* -----------------------------------------
-                   GO TO PORTFOLIO
-                ----------------------------------------- */
-
-                setTimeout(
-                    function () {
-
-                        window.location.href =
-                            "index.html";
-
-                    },
-                    900
-                );
-
-            }
-        );
-
-
-        /* ===============================================
-           PASSWORD SHOW / HIDE
-        =============================================== */
-
-        const passwordToggle =
-            document.getElementById(
-                "passwordToggle"
-            );
-
-
-        const passwordInput =
-            document.getElementById(
-                "loginPassword"
-            );
-
-
-        if (
-            passwordToggle &&
-            passwordInput
-        ) {
-
-            passwordToggle.addEventListener(
-                "click",
-                function () {
-
-                    if (
-                        passwordInput.type ===
-                        "password"
-                    ) {
-
-                        passwordInput.type =
-                            "text";
-
-                        passwordToggle.textContent =
-                            "🙈";
-
-                    } else {
-
-                        passwordInput.type =
-                            "password";
-
-                        passwordToggle.textContent =
-                            "👁";
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        /* ===============================================
-           FORGOT PASSWORD
-        =============================================== */
-
-        const forgotPassword =
-            document.getElementById(
-                "forgotPassword"
-            );
-
-
-        if (forgotPassword) {
-
-            forgotPassword.addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-
-
-                    const savedUser =
-                        localStorage.getItem(
-                            "portfolioUser"
-                        );
-
-
-                    if (!savedUser) {
-
-                        alert(
-                            "No account found. Please create an account first."
-                        );
-
-                        return;
-
-                    }
-
-
-                    alert(
-                        "For this demo portfolio, please create a new account if you forgot your password."
-                    );
-
-                }
-            );
-
-        }
-
-    }
-
-
-
-    /* =====================================================
-       SIGNUP PAGE
-    ===================================================== */
-
-    const signupForm =
-        document.getElementById(
-            "signupForm"
-        );
-
-
-    if (signupForm) {
-
-
-        signupForm.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                const nameInput =
-                    document.getElementById(
-                        "signupName"
-                    );
-
-
-                const emailInput =
-                    document.getElementById(
-                        "signupEmail"
-                    );
-
-
-                const passwordInput =
-                    document.getElementById(
-                        "signupPassword"
-                    );
-
-
-                const confirmInput =
-                    document.getElementById(
-                        "confirmPassword"
-                    );
-
-
-                const termsCheck =
-                    document.getElementById(
-                        "termsCheck"
-                    );
-
-
-                const message =
-                    document.getElementById(
-                        "signupMessage"
-                    );
-
-
-                const signupButton =
-                    document.getElementById(
-                        "signupButton"
-                    );
-
-
-                const name =
-                    nameInput.value.trim();
-
-
-                const email =
-                    emailInput.value.trim();
-
-
-                const password =
-                    passwordInput.value;
-
-
-                const confirmPassword =
-                    confirmInput.value;
-
-
-                /* -----------------------------------------
-                   NAME VALIDATION
-                ----------------------------------------- */
-
-                if (name.length < 2) {
-
-                    showMessage(
-                        message,
-                        "Please enter your full name.",
-                        "error"
-                    );
-
-                    nameInput.focus();
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   EMAIL VALIDATION
-                ----------------------------------------- */
-
-                const emailPattern =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-                if (
-                    !emailPattern.test(email)
-                ) {
-
-                    showMessage(
-                        message,
-                        "Please enter a valid email address.",
-                        "error"
-                    );
-
-                    emailInput.focus();
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   PASSWORD LENGTH
-                ----------------------------------------- */
-
-                if (
-                    password.length < 6
-                ) {
-
-                    showMessage(
-                        message,
-                        "Password must contain at least 6 characters.",
-                        "error"
-                    );
-
-                    passwordInput.focus();
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   PASSWORD MATCH
-                ----------------------------------------- */
-
-                if (
-                    password !== confirmPassword
-                ) {
-
-                    showMessage(
-                        message,
-                        "Passwords do not match.",
-                        "error"
-                    );
-
-                    confirmInput.focus();
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   TERMS CHECK
-                ----------------------------------------- */
-
-                if (
-                    !termsCheck.checked
-                ) {
-
-                    showMessage(
-                        message,
-                        "Please accept the terms and conditions.",
-                        "error"
-                    );
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   CHECK EXISTING ACCOUNT
-                ----------------------------------------- */
-
-                const existingUser =
-                    localStorage.getItem(
-                        "portfolioUser"
-                    );
-
-
-                if (existingUser) {
-
-                    try {
-
-                        const oldUser =
-                            JSON.parse(
-                                existingUser
-                            );
-
-
-                        if (
-                            oldUser.email &&
-                            oldUser.email.toLowerCase() ===
-                            email.toLowerCase()
-                        ) {
-
-                            showMessage(
-                                message,
-                                "An account with this email already exists.",
-                                "error"
-                            );
-
-                            return;
-
-                        }
-
-                    } catch (error) {
-
-                        localStorage.removeItem(
-                            "portfolioUser"
-                        );
-
-                    }
-
-                }
-
-
-                /* -----------------------------------------
-                   CREATE USER
-                ----------------------------------------- */
-
-                const newUser = {
-
-                    name: name,
-
-                    email: email,
-
-                    password: password
-
-                };
-
-
-                /* Save user */
-
-                localStorage.setItem(
-                    "portfolioUser",
-                    JSON.stringify(newUser)
-                );
-
-
-                /* Make sure user is NOT automatically
-                   logged in after signup */
-
-                localStorage.removeItem(
-                    "loggedIn"
-                );
-
-
-                localStorage.removeItem(
-                    "loggedInUser"
-                );
-
-
-                /* -----------------------------------------
-                   SUCCESS MESSAGE
-                ----------------------------------------- */
-
-                showMessage(
-                    message,
-                    "Account created successfully! Redirecting to Login...",
-                    "success"
-                );
-
-
-                /* Disable button */
-
-                if (signupButton) {
-
-                    signupButton.disabled = true;
-
-                    signupButton.innerHTML =
-                        `
-                        <span>
-                            Account Created
-                        </span>
-
-                        <span>
-                            ✓
-                        </span>
-                        `;
-
-                }
-
-
-                /* -----------------------------------------
-                   GO TO LOGIN PAGE
-                ----------------------------------------- */
-
-                setTimeout(
-                    function () {
-
-                        window.location.href =
-                            "login.html";
-
-                    },
-                    1300
-                );
-
-            }
-        );
-
-
-        /* ===============================================
-           SIGNUP PASSWORD SHOW / HIDE
-        =============================================== */
-
-        setupPasswordToggle(
-            "signupPasswordToggle",
-            "signupPassword"
-        );
-
-
-        setupPasswordToggle(
-            "confirmPasswordToggle",
-            "confirmPassword"
-        );
-
-    }
-
-});
+import { initializeApp, getApps, getApp } from
+  "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  updateProfile
+} from
+  "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  setDoc
+} from
+  "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
 
 
 /* =========================================================
-   MESSAGE FUNCTION
+   1. FIREBASE CONFIGURATION
+   Replace with your actual Firebase web app configuration.
 ========================================================= */
 
-function showMessage(
-    element,
-    text,
-    type
-) {
+const firebaseConfig = {
+    apiKey: "AIzaSyDKt97iANELaMijliaghYN0D_Fku0bu2v0",
+    authDomain: "ramya-portfolio-afe4d.firebaseapp.com",
+    projectId: "ramya-portfolio-afe4d",
+    storageBucket: "ramya-portfolio-afe4d.firebasestorage.app",
+    messagingSenderId: "81907896986",
+    appId: "1:81907896986:web:1d63b2e3ac40d8ef538523",
+    measurementId: "G-9B7SYT8BG5"
+};
 
-    if (!element) {
-        return;
+
+/* =========================================================
+   2. INITIALIZE FIREBASE
+========================================================= */
+
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+/* =========================================================
+   3. MESSAGE HELPER
+========================================================= */
+
+function showMessage(element, text, type = "error") {
+  if (!element) return;
+
+  element.textContent = text;
+  element.classList.remove("success", "error");
+  element.classList.add(type);
+  element.setAttribute("role", "status");
+}
+
+
+/* =========================================================
+   4. FIREBASE ERROR MESSAGES
+========================================================= */
+
+function getErrorMessage(error) {
+  const messages = {
+    "auth/invalid-email":
+      "Please enter a valid email address.",
+
+    "auth/invalid-credential":
+      "Incorrect email or password.",
+
+    "auth/user-not-found":
+      "No account found. Please sign up first.",
+
+    "auth/wrong-password":
+      "Incorrect email or password.",
+
+    "auth/email-already-in-use":
+      "An account with this email already exists. Please log in.",
+
+    "auth/weak-password":
+      "Password must contain at least 6 characters.",
+
+    "auth/too-many-requests":
+      "Too many attempts. Please try again later.",
+
+    "auth/network-request-failed":
+      "Network error. Check your internet connection.",
+
+    "permission-denied":
+      "Firestore permission denied. Check your Firestore Rules.",
+
+    "unavailable":
+      "Firebase is temporarily unavailable. Try again."
+  };
+
+  return messages[error.code] ||
+    "Something went wrong. Please try again.";
+}
+
+
+/* =========================================================
+   5. BUTTON LOADING HELPER
+========================================================= */
+
+function setButtonLoading(button, loading, normalText) {
+  if (!button) return;
+
+  button.disabled = loading;
+  button.textContent = loading ? "Please wait..." : normalText;
+}
+
+
+/* =========================================================
+   6. PASSWORD SHOW / HIDE
+   Original IDs preserved.
+========================================================= */
+
+function setupPasswordToggle(buttonId, inputId) {
+  const button = document.getElementById(buttonId);
+  const input = document.getElementById(inputId);
+
+  if (!button || !input) return;
+
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const showPassword = input.type === "password";
+
+    input.type = showPassword ? "text" : "password";
+    button.textContent = showPassword ? "🙈" : "👁";
+  });
+}
+
+setupPasswordToggle("passwordToggle", "loginPassword");
+setupPasswordToggle("signupPasswordToggle", "signupPassword");
+setupPasswordToggle("confirmPasswordToggle", "confirmPassword");
+
+
+/* =========================================================
+   7. LOGIN
+   IDs: loginForm, loginEmail, loginPassword,
+        loginMessage, loginButton, rememberMe
+========================================================= */
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const emailInput = document.getElementById("loginEmail");
+    const passwordInput = document.getElementById("loginPassword");
+    const message = document.getElementById("loginMessage");
+    const button = document.getElementById("loginButton");
+    const rememberMe = document.getElementById("rememberMe");
+
+    const email = emailInput?.value.trim();
+    const password = passwordInput?.value;
+
+    const normalButtonText = button?.textContent || "Login";
+
+    if (!email || !password) {
+      showMessage(
+        message,
+        "Please enter your email and password."
+      );
+      return;
     }
 
+    try {
+      setButtonLoading(button, true, normalButtonText);
+      showMessage(message, "Signing in...", "success");
 
-    element.textContent =
-        text;
+      // Remember Me checked = persist across browser restarts.
+      // Unchecked = session persistence.
+      await setPersistence(
+        auth,
+        rememberMe?.checked
+          ? browserLocalPersistence
+          : browserSessionPersistence
+      );
+
+      const credential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const user = credential.user;
+
+      // Preserve existing UI integrations.
+      // These contain no password.
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem(
+        "loggedInUser",
+        user.displayName || user.email || ""
+      );
+
+      if (rememberMe?.checked) {
+        localStorage.setItem("rememberMe", "true");
+      } else {
+        localStorage.removeItem("rememberMe");
+      }
+
+      if (button) {
+        button.textContent = "Opening Portfolio... ✓";
+      }
+
+      showMessage(
+        message,
+        "Login successful! Welcome back.",
+        "success"
+      );
+
+      // Allow the success message to appear before redirecting.
+      window.setTimeout(function () {
+        window.location.assign("./index.html");
+      }, 700);
+
+    } catch (error) {
+      console.error("Firebase login error:", error);
+
+      showMessage(message, getErrorMessage(error));
+
+      setButtonLoading(button, false, normalButtonText);
+    }
+  });
+}
 
 
-    element.classList.remove(
-        "success",
-        "error"
-    );
+/* =========================================================
+   8. FORGOT PASSWORD
+   IDs: forgotPassword, loginEmail, loginMessage
+========================================================= */
 
+const forgotPassword = document.getElementById("forgotPassword");
 
-    if (type === "success") {
+if (forgotPassword) {
+  forgotPassword.addEventListener("click", async function (event) {
+    event.preventDefault();
 
-        element.classList.add(
-            "success"
-        );
+    const email = document.getElementById("loginEmail")?.value.trim();
+    const message = document.getElementById("loginMessage");
 
-    } else {
+    if (!email) {
+      showMessage(
+        message,
+        "Enter your registered email address first."
+      );
 
-        element.classList.add(
-            "error"
-        );
-
+      document.getElementById("loginEmail")?.focus();
+      return;
     }
 
+    try {
+      await sendPasswordResetEmail(auth, email);
+
+      showMessage(
+        message,
+        "If an account exists for this email, a password reset email will be sent.",
+        "success"
+      );
+
+    } catch (error) {
+      console.error("Password reset error:", error);
+
+      showMessage(message, getErrorMessage(error));
+    }
+  });
+}
+
+
+/* =========================================================
+   9. SIGNUP
+   IDs: signupForm, signupName, signupEmail,
+        signupPassword, confirmPassword, termsCheck,
+        signupMessage, signupButton
+========================================================= */
+
+const signupForm = document.getElementById("signupForm");
+
+if (signupForm) {
+  signupForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const nameInput = document.getElementById("signupName");
+    const emailInput = document.getElementById("signupEmail");
+    const passwordInput = document.getElementById("signupPassword");
+    const confirmInput = document.getElementById("confirmPassword");
+    const termsCheck = document.getElementById("termsCheck");
+    const message = document.getElementById("signupMessage");
+    const button = document.getElementById("signupButton");
+
+    const name = nameInput?.value.trim();
+    const email = emailInput?.value.trim();
+    const password = passwordInput?.value;
+    const confirmPassword = confirmInput?.value;
+
+    const normalButtonText = button?.textContent || "Create Account";
+
+    /* Name validation */
+    if (!name || name.length < 2 || name.length > 100) {
+      showMessage(
+        message,
+        "Please enter your name (2–100 characters)."
+      );
+
+      nameInput?.focus();
+      return;
+    }
+
+    /* Email validation */
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !emailPattern.test(email)) {
+      showMessage(message, "Please enter a valid email address.");
+      emailInput?.focus();
+      return;
+    }
+
+    /* Password validation */
+    if (!password || password.length < 6) {
+      showMessage(
+        message,
+        "Password must contain at least 6 characters."
+      );
+
+      passwordInput?.focus();
+      return;
+    }
+
+    /* Confirm password */
+    if (password !== confirmPassword) {
+      showMessage(message, "Passwords do not match.");
+      confirmInput?.focus();
+      return;
+    }
+
+    /* Terms checkbox */
+    if (termsCheck && !termsCheck.checked) {
+      showMessage(
+        message,
+        "Please accept the terms and conditions."
+      );
+      return;
+    }
+
+    let createdUser = null;
+
+    try {
+      setButtonLoading(button, true, normalButtonText);
+      showMessage(message, "Creating your account...", "success");
+
+      // Create account in Firebase Authentication.
+      const credential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      createdUser = credential.user;
+
+      // Save display name to Firebase Authentication profile.
+      await updateProfile(createdUser, {
+        displayName: name
+      });
+
+      // Save ONLY name and email to Firestore.
+      // Never save password or confirmPassword.
+      await setDoc(doc(db, "users", createdUser.uid), {
+        name: name,
+        email: createdUser.email
+      });
+
+      // Keep original behavior: signup does not leave the
+      // visitor signed in; send them to the login page.
+      await signOut(auth);
+
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("loggedInUser");
+
+      showMessage(
+        message,
+        "Account created successfully! Redirecting to Login...",
+        "success"
+      );
+
+      if (button) {
+        button.textContent = "Account Created ✓";
+      }
+
+      window.setTimeout(function () {
+        window.location.assign("./login.html");
+      }, 1000);
+
+    } catch (error) {
+      console.error("Firebase signup error:", error);
+
+      if (createdUser) {
+        // Auth account exists, but a later step failed.
+        // Do not silently report signup as successful.
+        try {
+          await signOut(auth);
+        } catch (signOutError) {
+          console.error("Sign-out after signup error:", signOutError);
+        }
+
+        showMessage(
+          message,
+          "Your Firebase account was created, but saving the profile failed. Check Firestore Rules and try again after fixing them."
+        );
+      } else {
+        showMessage(message, getErrorMessage(error));
+      }
+
+      setButtonLoading(button, false, normalButtonText);
+    }
+  });
 }
 
 
 
 /* =========================================================
-   PASSWORD TOGGLE FUNCTION
+   10. LOGOUT — FIREBASE AUTHENTICATION
 ========================================================= */
 
-function setupPasswordToggle(
-    buttonId,
-    inputId
-) {
+function setupLogout() {
+    const logoutBtn = document.getElementById("logoutBtn");
 
-
-    const button =
-        document.getElementById(
-            buttonId
+    if (!logoutBtn) {
+        console.warn(
+            "Logout button not found. Check id='logoutBtn' and auth.js loading."
         );
-
-
-    const input =
-        document.getElementById(
-            inputId
-        );
-
-
-    if (
-        !button ||
-        !input
-    ) {
-
         return;
-
     }
 
+    // Prevent duplicate event handlers
+    if (logoutBtn.dataset.logoutInitialized === "true") {
+        return;
+    }
 
-    button.addEventListener(
-        "click",
-        function () {
+    logoutBtn.dataset.logoutInitialized = "true";
 
+    logoutBtn.addEventListener("click", async function (event) {
+        event.preventDefault();
 
-            if (
-                input.type ===
-                "password"
-            ) {
+        if (logoutBtn.disabled) return;
 
-                input.type =
-                    "text";
+        const confirmLogout = window.confirm(
+            "Are you sure you want to logout?"
+        );
 
-                button.textContent =
-                    "🙈";
+        if (!confirmLogout) return;
 
-            } else {
+        const originalText = logoutBtn.textContent;
 
-                input.type =
-                    "password";
+        try {
+            logoutBtn.disabled = true;
+            logoutBtn.textContent = "Logging out...";
 
-                button.textContent =
-                    "👁";
+            // Sign out from Firebase Authentication
+            await signOut(auth);
 
-            }
+            // Clear the old local session flags
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("loggedInUser");
+            localStorage.removeItem("rememberMe");
 
+            // Redirect to login page
+            window.location.replace("./login.html");
+
+        } catch (error) {
+            console.error("Firebase logout error:", error);
+
+            logoutBtn.disabled = false;
+            logoutBtn.textContent = originalText;
+
+            alert("Logout failed. Please check your internet connection and try again.");
         }
-    );
-
+    });
 }
+
+// Works whether this module loads before or after DOMContentLoaded
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupLogout, {
+        once: true
+    });
+} else {
+    setupLogout();
+}
+
+
+
+/* =========================================================
+   11. EXPORT FIREBASE INSTANCES
+========================================================= */
+
+export { app, auth, db };
